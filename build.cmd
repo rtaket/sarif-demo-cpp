@@ -21,13 +21,8 @@ IF NOT EXIST "%LLVMPATH%\bin\scan-build" (
 
 ECHO Start compile
 PUSHD %SRCPATH%
-  DIR /s /b "%LLVMPATH%"
-  CALL scan-build make
-  REM CALL javac.exe -g -verbose -d %OUTPATH% %SRCPATH%\*.java
+  CALL scan-build mingw32-make 
 POPD
-
-ECHO Start analysis
-REM CALL %FINDBUGSPATH%\findbugs.bat -textui -effort:max -low -xml:withMessages -output %OUTPATH%\%PROJECTNAME%.findbugs.xml "%OUTPATH%" 
 
 ECHO Start conversion
 REM CALL %CONVERTTOSARIFPATH%\ConvertToSarif.exe -t FindBugs -o bld\%PROJECTNAME%.findbugs.converted.sarif -p -f bld\%PROJECTNAME%.findbugs.xml
