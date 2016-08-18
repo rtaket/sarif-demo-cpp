@@ -1,1 +1,1 @@
-# sarif-demo-cpp
+# sarif-demo-java
