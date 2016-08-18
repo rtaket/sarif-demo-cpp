@@ -13,8 +13,8 @@ IF EXIST %OUTPATH% RMDIR /Q /S %OUTPATH%
 MKDIR %OUTPATH%
 
 ECHO Start compile
-PUSDH %SRCPATH%
-  CALL scan-build -k -V make
+PUSHD %SRCPATH%
+  CALL scan-build gcc AB_IrrelevantBranch.cpp
   REM CALL javac.exe -g -verbose -d %OUTPATH% %SRCPATH%\*.java
 POPD
 
