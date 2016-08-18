@@ -16,7 +16,7 @@ MKDIR %OUTPATH%
 
 ECHO Fix LLVM
 IF NOT EXIST "%LLVMPATH%\bin\scan-build" (
-  COPY /Y "%LLVMTOOLSPATH%\bin\scan-build" "%LLVMPATH%\bin"
+  COPY /Y "%LLVMTOOLSPATH%\bin\*.*" "%LLVMPATH%\bin"
 )
 
 ECHO Start compile
