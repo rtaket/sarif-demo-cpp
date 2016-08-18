@@ -14,7 +14,7 @@ MKDIR %OUTPATH%
 
 ECHO Start compile
 PUSHD %SRCPATH%
-  CALL scan-build gcc AB_IrrelevantBranch.cpp
+  CALL scan-build sh -c "gcc AB_IrrelevantBranch.cpp"
   REM CALL javac.exe -g -verbose -d %OUTPATH% %SRCPATH%\*.java
 POPD
 
