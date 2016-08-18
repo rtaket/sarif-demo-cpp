@@ -15,7 +15,7 @@ IF EXIST %OUTPATH% RMDIR /Q /S %OUTPATH%
 MKDIR %OUTPATH%
 
 ECHO Fix LLVM
-IF NOT EXIST "%LLVMPATH%\bin" (
+IF NOT EXIST "%LLVMPATH%\bin\scan-build" (
   COPY /Y "%LLVMTOOLSPATH%\bin\scan-build" "%LLVMPATH%\bin"
 )
 
