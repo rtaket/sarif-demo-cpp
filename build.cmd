@@ -14,7 +14,8 @@ MKDIR %OUTPATH%
 
 ECHO Start compile
 PUSHD %SRCPATH%
-  CALL scan-build make
+  CALL scan-build xcodebuild
+  xcodebuild
   REM CALL javac.exe -g -verbose -d %OUTPATH% %SRCPATH%\*.java
 POPD
 
