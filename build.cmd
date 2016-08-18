@@ -1,7 +1,9 @@
 SET OUTPATH=%~dp0\bld
 SET SRCPATH=%~dp0\src
+SET LLVMTOOLSPATH=%~dp0\tools\LLVM
 SET FINDBUGSPATH=%~dp0\tools\findbugs-3.0.1\bin
 SET CONVERTTOSARIFPATH=%~dp0\tools\ConvertToSarif
+SET LLVMPATH=C:\Program Files\LLVM
 
 IF '%APPVEYOR_PROJECT_NAME%' EQU '' (
   SET PROJECTNAME=project
@@ -12,10 +14,14 @@ IF '%APPVEYOR_PROJECT_NAME%' EQU '' (
 IF EXIST %OUTPATH% RMDIR /Q /S %OUTPATH%
 MKDIR %OUTPATH%
 
+ECHO Fix LLVM
+IF NOT EXIST "%LLVMPATH%\bin" (
+  COPY /Y "%LLVMTOOLSPATH%\bin\scan-build" "%LLVMPATH%\bin"
+)
+
 ECHO Start compile
 PUSHD %SRCPATH%
-  CALL scan-build xcodebuild
-  xcodebuild
+  CALL scan-build gcc -c *.cpp
   REM CALL javac.exe -g -verbose -d %OUTPATH% %SRCPATH%\*.java
 POPD
 
