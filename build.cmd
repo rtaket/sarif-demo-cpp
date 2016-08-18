@@ -21,6 +21,7 @@ IF NOT EXIST "%LLVMPATH%\bin\scan-build" (
 
 ECHO Start compile
 PUSHD %SRCPATH%
+  DIR "%LLVMPATH%\bin"
   CALL scan-build gcc -c *.cpp
   REM CALL javac.exe -g -verbose -d %OUTPATH% %SRCPATH%\*.java
 POPD
