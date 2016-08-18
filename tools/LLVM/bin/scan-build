@@ -1430,9 +1430,9 @@ sub ShellEscape {
 
 sub FindClang {
   if (!defined $Options{AnalyzerDiscoveryMethod}) {
-    $Clang = Cwd::realpath("$RealBin/bin/clang") if (-f "$RealBin/bin/clang");
+    $Clang = Cwd::realpath("$RealBin/bin/clang.exe") if (-f "$RealBin/bin/clang.exe");
     if (!defined $Clang || ! -x $Clang) {
-      $Clang = Cwd::realpath("$RealBin/clang") if (-f "$RealBin/clang");
+      $Clang = Cwd::realpath("$RealBin/clang.exe") if (-f "$RealBin/clang.exe");
     }
     if (!defined $Clang || ! -x $Clang) {
       return "error: Cannot find an executable 'clang' relative to" .
